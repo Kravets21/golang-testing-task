@@ -16,7 +16,7 @@ var (
 )
 
 type ApiServiceInterface interface {
-	Task([]int) ([]bool, error)
+	Task([]int64) ([]bool, error)
 }
 
 type ApiHandler struct {
@@ -36,22 +36,19 @@ func (handler *ApiHandler) Task(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	type responseStruct struct {
-		slice []int
-	}
+	var response []int64
 
-	var response responseStruct
 	err = json.Unmarshal(body, &response)
 	if err != nil {
 		rest.BadRequestResponse(w, baseErrors.ErrJSONUnmarshal(err))
 		return
 	}
 
-	result, err := handler.service.Task(response.slice)
+	result, err := handler.service.Task(response)
 	if err != nil {
 		rest.BadRequestResponse(w, ErrServiceTask(err))
 		return
 	}
 
-	rest.SuccessResponse(w, result)
+	rest.SliceSuccessResponse(w, result)
 }

@@ -6,14 +6,8 @@ import (
 	"net/http"
 )
 
-func SuccessResponse(w http.ResponseWriter, data interface{}) {
-	type structResponse struct {
-		data interface{}
-	}
-
-	response, err := json.Marshal(structResponse{
-		data: data,
-	})
+func SliceSuccessResponse(w http.ResponseWriter, data []bool) {
+	response, err := json.Marshal(data)
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
