@@ -1,3 +1,5 @@
+.PHONY: all test clean
+
 SHELL = /bin/bash
 
 APP_CONTAINER_NAME := task_api
@@ -19,3 +21,9 @@ down: ## Stop all started for development containers
 
 run:
 	go run cmd/api/main.go
+
+test-docker:
+	$(docker_compose_bin) exec -it $(APP_CONTAINER_NAME) go test ./test -v -race
+
+test:
+	go test ./test -v -race
