@@ -29,6 +29,10 @@ make build
 down the project:
 make down
 
+to run tests:
+make test (without docker)
+make test-docker (from docker)
+
 endpoint: http://localhost:8080
 
 You can test app with Postman
