@@ -11,23 +11,25 @@ If the request is valid, return a slice of booleans either the number was prime 
 
 
 [Vadim Kravets]
-Проект сделан с учетом дальнейшего расширения, архиктуру выбрал больше похожую на DDD
-Бизнес логика в сервисах, хендлеры как прокладки, хелперы вынесены в отдельные папки
+The Project architecture (DDD) was made for future extending of its code base. 
+Business logic is at services, handlers just as "proxy", helpers are located outside in additional folders
 
-Инструкция:
+Instruction:
 (Makefile)
 
 1. git clone https://github.com/Kravets21/golang-testing-task.git
 2. cd golang-testing-task
 
-3. (Если ГО установлен тогда make run)
-Если нет, можно использовать докер контейнер
+3. (if Golang is downloaded on your PC then type "make run")
+If Golang isnt on your PC then you should work with docker containers:
 
-поднять проект на докере:
+up the project:
 make build
 
-закрыть проект:
+down the project:
 make down
 
 endpoint: http://localhost:8080
+
+You can test app with Postman
 
